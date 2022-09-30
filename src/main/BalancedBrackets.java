@@ -1,6 +1,8 @@
 package main;
 
 
+import java.util.*;
+
 public class BalancedBrackets {
     /**
      * The function BalancedBrackets should return true if and only if
@@ -23,12 +25,33 @@ public class BalancedBrackets {
      */
     public static boolean hasBalancedBrackets(String str) {
         int brackets = 0;
-        for (char ch : str.toCharArray()) {
+
+//        Stack<Character> store = new Stack<>();
+//        for (Character ch : str.toCharArray()) {
+//
+//            if (ch == '[') {
+//                store.push(']');
+//            } else if (ch == ']') {
+//                if (store.isEmpty() || store.pop() != ch) {
+//                    return false;
+//                }
+//            }
+//        }
+//        return store.isEmpty();
+//    }
+
+
+        for (Character ch : str.toCharArray()) {
             if (ch == '[') {
                 brackets++;
+
             } else if (ch == ']') {
                 brackets--;
             }
+            if (brackets < 0) {
+                return false;
+            }
+
         }
         return brackets == 0;
     }
